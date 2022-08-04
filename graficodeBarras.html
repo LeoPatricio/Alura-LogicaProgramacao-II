@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Frações!</title>
+	<canvas width="600" height="800">  </canvas>
+	<script>
+		function desenhaRetangulo(x, y, largura, altura, color) {
+			var tela = document.querySelector("canvas");
+			var pincel = tela.getContext("2d");
+
+			pincel.fillStyle=color;
+			pincel.fillRect(x,y, largura, altura);
+			pincel.strokeStyle="white";
+			pincel.strokeRect(x,y, largura, altura);
+		}
+
+		function desenhaTexto(x , y, txt) {
+			var tela = document.querySelector("canvas");
+			var pincel = tela.getContext("2d");
+
+			pincel.font="15px Georgia";
+			pincel.fillStyle="white";
+			pincel.fillText(txt, x, y);    
+		}
+
+		function desenhaBarra(x, y, serie, cores, txt) {
+
+			desenhaTexto(x, y - 10, txt);
+
+			var somaAltura = 0;
+			for (var i = 0; i < serie.length; i++) {
+				var altura = serie[i];
+				desenhaRetangulo(x, y + somaAltura, 50, altura, cores[i]);
+				somaAltura = somaAltura + altura;
+			}
+		}
+
+		var cores = ["blue","green","yellow", "red"];
+		var serie2015 = [50,25,20,5];
+		var serie2016 = [65,20,13,2];
+
+		desenhaBarra(50, 50, serie2015, cores, "2022");
+		desenhaBarra(150, 50, serie2016, cores, "2021");
+
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>
